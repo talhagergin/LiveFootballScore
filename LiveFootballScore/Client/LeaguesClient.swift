@@ -13,6 +13,7 @@ enum NetworkError: Error{
     case decodingerror
 }
 struct LeaguesClient {
+
     func getLeaguesByCountry() async throws -> [CountryLeagues] {
         guard let url = URL(string: APIEndpoint.baseURL) else {
             throw NetworkError.badUrl

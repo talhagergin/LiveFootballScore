@@ -8,7 +8,17 @@
 import SwiftUI
 
 struct TeamsTableView: View {
-    let teams :[Teams]
+    //let teams :[Teams]
+    let leagueID: Int
+    @State private var teamsClient = TeamsClient()
+    @State private var teams: [Teams] = []
+    private func getTeamsByLeagueID(leagueID: Int) async {
+        do {
+            teams = try await teamsClient.getTeamsByLeagueID(leagueID: leagueID)
+        } catch {
+            print("Hata oluştu: \(error.localizedDescription)")
+        }
+    }
     var body: some View {
         List(teams) { team in
                     HStack {
@@ -24,6 +34,12 @@ struct TeamsTableView: View {
                 }
         }
         .navigationTitle("Ligler")
+        .onAppear{
+            Task{
+                await getTeamsByLeagueID(leagueID: leagueID)
+            }
+            
+        }
     }
 }
 /*

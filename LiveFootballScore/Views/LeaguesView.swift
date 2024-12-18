@@ -8,14 +8,22 @@
 import SwiftUI
 
 struct LeaguesView: View {
-    let countries :[CountryLeagues]
-    let teams :[Teams]
+    //let countries :[CountryLeagues]
+    @State private var leaguesClient = LeaguesClient()
+    @State private var countries: [CountryLeagues] = []
+    private func getLeaguesByCountry() async {
+        do {
+            countries = try await leaguesClient.getLeaguesByCountry()
+        } catch {
+            print("Hata oluştu: \(error.localizedDescription)")
+        }
+    }
     var body: some View {
         List(countries) { country in
             Section(header: Text(country.localizedName)) {
                 ForEach(country.leagues) { league in
                     NavigationLink(
-                        destination: TeamsTableView(teams: teams)
+                        destination: TeamsTableView(leagueID: league.id)
                     ){
                         HStack {
                             Text(league.name)
@@ -34,6 +42,11 @@ struct LeaguesView: View {
             }
         }
         .navigationTitle("Ligler")
+        .onAppear{
+            Task{
+                await getLeaguesByCountry()
+            }
+        }
     }
 }
 /*

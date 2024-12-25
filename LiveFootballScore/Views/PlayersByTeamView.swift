@@ -1,18 +1,61 @@
-//
-//  PlayersByTeamView.swift
-//  LiveFootballScore
-//
-//  Created by Talha Gergin on 25.12.2024.
-//
-
 import SwiftUI
 
 struct PlayersByTeamView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    let teamID: Int
+    @State private var playersImages: [Int: String] = [:] // Her member.id için resim URL'si saklanır
+    @State private var playerImageClient = PlayersImageClient()
+    @State private var players: [ListPlayers] = []
+    @State private var playersClient = PlayersByTeamClient()
+    
+    private func getPlayersByTeam(teamID: Int) async {
+        do {
+            players = try await playersClient.getPlayersByTeam(teamID: teamID)
+        } catch {
+            print("Hata oluştu: \(error.localizedDescription)")
+        }
     }
-}
-
-#Preview {
-    PlayersByTeamView()
+    
+    private func getPlayersImage(for memberID: Int) async {
+        do {
+            let image = try await playerImageClient.getPlayersImage(playerID: memberID)
+            DispatchQueue.main.async {
+                playersImages[memberID] = image
+            }
+        } catch {
+            print("Hata oluştu: \(error.localizedDescription)")
+        }
+    }
+    
+    var body: some View {
+        List(players) { player in
+            Section(header: Text(player.title)) {
+                ForEach(player.members) { member in
+                    HStack {
+                        Text(member.name)
+                        Spacer()
+                        AsyncImage(url: URL(string: playersImages[member.id] ?? "")) { image in
+                            image.resizable()
+                        } placeholder: {
+                            ProgressView()
+                        }
+                        .frame(width: 40, height: 40)
+                        .clipShape(Circle())
+                        .onAppear {
+                            if playersImages[member.id] == nil { // Eğer resim daha önce alınmamışsa
+                                Task {
+                                    await getPlayersImage(for: member.id)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .navigationTitle("Kadro")
+        .onAppear {
+            Task {
+                await getPlayersByTeam(teamID: teamID)
+            }
+        }
+    }
 }

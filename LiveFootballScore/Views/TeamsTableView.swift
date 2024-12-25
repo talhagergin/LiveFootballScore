@@ -21,17 +21,20 @@ struct TeamsTableView: View {
     }
     var body: some View {
         List(teams) { team in
-                    HStack {
-                        Text(team.name)
-                        Spacer()
-                        AsyncImage(url: URL(string: team.logo)) { image in
-                            image.resizable()
-                        } placeholder: {
-                            ProgressView()
-                        }
-                        .frame(width: 40, height: 40)
-                        .clipShape(Circle())
-                }
+            NavigationLink(destination: PlayersByTeamView(teamID: team.id)){
+                HStack {
+                    Text(team.name)
+                    Spacer()
+                    AsyncImage(url: URL(string: team.logo)) { image in
+                        image.resizable()
+                    } placeholder: {
+                        ProgressView()
+                    }
+                    .frame(width: 40, height: 40)
+                    .clipShape(Circle())
+            }
+            }
+                   
         }
         .navigationTitle("Ligler")
         .onAppear{

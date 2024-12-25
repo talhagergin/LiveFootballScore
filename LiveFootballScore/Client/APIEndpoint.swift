@@ -13,6 +13,8 @@ enum APIEndpoint{
     ]
     static let baseURL = "https://free-api-live-football-data.p.rapidapi.com/football-get-all-leagues-with-countries"
     static let teamsURL = "https://free-api-live-football-data.p.rapidapi.com/football-get-list-all-team?leagueid="
+    static let playersURL = "https://free-api-live-football-data.p.rapidapi.com/football-get-list-player?teamid="
+    static let playerImageURL = "https://free-api-live-football-data.p.rapidapi.com/football-get-player-logo?playerid="
     /*
     case getLeaguesByCountry(Void)
     case getTeamsByLeagueID(Int)

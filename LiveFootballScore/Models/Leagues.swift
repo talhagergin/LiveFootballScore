@@ -16,7 +16,7 @@ struct LeaguesResponse: Decodable {
 }
 
 struct CountryLeagues: Decodable, Identifiable {
-    var id: String { ccode } // `ccode`'yi benzersiz kimlik olarak kullanıyoruz
+    var id: String { ccode } 
     let ccode: String
     let name: String
     let localizedName: String

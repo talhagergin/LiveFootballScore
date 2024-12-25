@@ -20,31 +20,45 @@ struct TeamsTableView: View {
         }
     }
     var body: some View {
-        List(teams) { team in
-            NavigationLink(destination: PlayersByTeamView(teamID: team.id)){
-                HStack {
-                    Text(team.name)
-                    Spacer()
-                    AsyncImage(url: URL(string: team.logo)) { image in
-                        image.resizable()
-                    } placeholder: {
-                        ProgressView()
+        List {
+            Section(header: HStack {
+                Text("Takım").frame(maxWidth: .infinity, alignment: .leading)
+                Text("P").frame(width: 50, alignment: .center)
+                Text("G").frame(width: 70, alignment: .center)
+                Text("M").frame(width: 70, alignment: .center)
+                Text("B").frame(width: 70, alignment: .center)
+//                Text("Logo").frame(width: 50, alignment: .center)
+            }) {
+                ForEach(teams) { team in
+                    NavigationLink(destination: PlayersByTeamView(teamID: team.id)) {
+                        HStack {
+                            Text(team.name).frame(maxWidth: .infinity, alignment: .leading)
+                            Text("\(team.pts)").frame(width: 30, alignment: .center)
+                            Text("\(team.wins)").frame(width: 30, alignment: .center)
+                            Text("\(team.losses)").frame(width: 30, alignment: .center)
+                            Text("\(team.draws)").frame(width: 30, alignment: .center)
+                            AsyncImage(url: URL(string: team.logo)) { image in
+                                image.resizable()
+                            } placeholder: {
+                                ProgressView()
+                            }
+                            .frame(width: 40, height: 40)
+                            .clipShape(Circle())
+                            .frame(width: 50, alignment: .center)
+                        }
                     }
-                    .frame(width: 40, height: 40)
-                    .clipShape(Circle())
+                }
             }
-            }
-                   
         }
         .navigationTitle("Ligler")
-        .onAppear{
-            Task{
+        .onAppear {
+            Task {
                 await getTeamsByLeagueID(leagueID: leagueID)
             }
-            
         }
     }
 }
+
 /*
 #Preview {
     TeamsTableView()

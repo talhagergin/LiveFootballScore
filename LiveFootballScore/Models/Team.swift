@@ -34,7 +34,7 @@ struct Teams: Decodable, Identifiable {
     let name: String
     let shortName: String?
     let deduction: Int?
-    let ongoing: Ongoing?  // Ongoing alanı opsiyonel hale getirildi
+    let ongoing: Ongoing?  // It shows which plays score on time.
     let played: Int
     let wins: Int
     let draws: Int

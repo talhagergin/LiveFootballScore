@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @State private var selectionItem = 0
     var body: some View {
+        /*
         TabView(selection: $selectionItem){
             LeaguesView(selectionTabItem: $selectionItem)
                 .tabItem{
@@ -24,11 +25,11 @@ struct ContentView: View {
                         .environment(\.symbolVariants, selectionItem == 0 ? .fill : .none)
                 }
                 .tag(1)
-        }
-        /*
+        }*/
+        
             NavigationView {
                 LeaguesView()
-            }*/
+            }
         
         }
     }

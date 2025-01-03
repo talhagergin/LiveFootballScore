@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LeaguesView: View {
     //let countries :[CountryLeagues]
-    @Binding var selectionTabItem: Int
+    //@Binding var selectionTabItem: Int
     @State private var leaguesClient = LeaguesClient()
     @State private var countries: [CountryLeagues] = []
     private func getLeaguesByCountry() async {

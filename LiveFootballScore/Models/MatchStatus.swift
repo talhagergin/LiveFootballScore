@@ -6,9 +6,9 @@ struct MatchStatus: Decodable {
     let finished: Bool
     let started: Bool
     let cancelled: Bool
-    let awarded: Bool
-    let scoreStr: String?
-    let reason: Reason?
+    let awarded: Bool? // Optional yaptık
+    let scoreStr: String?  // Optional yaptık
+    let reason: Reason? // Optional yaptık
 }
 
 // Maç durumunun kısa/uzun açıklama modeli

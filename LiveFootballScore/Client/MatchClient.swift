@@ -8,8 +8,8 @@
 import Foundation
 
 struct MatchClient {
-    func getMatches() async throws -> [Match] {
-        let matchesURL = APIEndpoint.matchesURL
+    func getMatches(leagueID: Int) async throws -> [Match] {
+        let matchesURL = APIEndpoint.matchesURL+"\(leagueID)"
         print("matchesURL")
         print(matchesURL)
 

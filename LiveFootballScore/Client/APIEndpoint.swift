@@ -16,6 +16,9 @@ enum APIEndpoint{
     static let playersURL = "https://free-api-live-football-data.p.rapidapi.com/football-get-list-player?teamid="
     static let playerImageURL = "https://free-api-live-football-data.p.rapidapi.com/football-get-player-logo?playerid="
     static let matchesURL = "https://free-api-live-football-data.p.rapidapi.com/football-get-all-matches-by-league?leagueid="
+    static let topPlayersGolURL = "https://free-api-live-football-data.p.rapidapi.com/football-get-top-players-by-goals?leagueid="
+    static let topPlayersAssistURL = "https://free-api-live-football-data.p.rapidapi.com/football-get-top-players-by-assists?leagueid="
+    static let topPlayersRatingURL = "https://free-api-live-football-data.p.rapidapi.com/football-get-top-players-by-rating?leagueid="
     /*
     case getLeaguesByCountry(Void)
     case getTeamsByLeagueID(Int)

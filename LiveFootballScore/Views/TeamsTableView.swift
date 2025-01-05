@@ -11,7 +11,8 @@ struct TeamsTableView: View {
     let leagueID: Int
     @State private var teamsClient = TeamsClient()
     @State private var teams: [Teams] = []
-    @State private var showMatches = false // MatchesView'i gösterme durumunu kontrol eder.
+    @State private var showMatches = false
+    @State private var showTopPlayers = false
     
     private func getTeamsByLeagueID(leagueID: Int) async {
         do {
@@ -30,7 +31,6 @@ struct TeamsTableView: View {
                     Text("G").frame(width: 70, alignment: .center)
                     Text("M").frame(width: 70, alignment: .center)
                     Text("B").frame(width: 70, alignment: .center)
-                    //                Text("Logo").frame(width: 50, alignment: .center)
                 }) {
                     ForEach(teams) { team in
                         NavigationLink(destination: PlayersByTeamView(teamID: team.id)) {
@@ -54,30 +54,46 @@ struct TeamsTableView: View {
                 }
             }
             .navigationTitle("Ligler")
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button("Fikstür") {
-                            showMatches.toggle() // MatchesView'i gösterme durumunu değiştir
-                        }
+            .toolbar {
+                ToolbarItemGroup(placement: .navigationBarTrailing) {
+                    Button {
+                        showMatches.toggle()
+                    } label: {
+                        Text("Fikstür")
                     }
+                    
+                    Button {
+                        showTopPlayers.toggle()
+                    } label: {
+                        Text("İstatistik Liderleri")
+                    }
+                    
                 }
-            
-            // MatchesView'i modal olarak göster
-                .sheet(isPresented: $showMatches) {
-                    NavigationView {
-                        MatchesView(leagueID: leagueID)
-                            .toolbar {
-                                ToolbarItem(placement: .navigationBarTrailing) {
-                                    Button("Kapat") {
-                                        showMatches = false
-                                    }
+            }
+            .sheet(isPresented: $showMatches) {
+                NavigationView {
+                    MatchesView(leagueID: leagueID)
+                        .toolbar {
+                            ToolbarItem(placement: .navigationBarTrailing) {
+                                Button("Kapat") {
+                                    showMatches = false
                                 }
                             }
-                    }
+                        }
                 }
-                
-                
-            
+            }
+            .sheet(isPresented: $showTopPlayers) {
+                 NavigationView {
+                    TopPlayersView(leagueID: leagueID) // leagueID'yi TopPlayersView'e aktarıyoruz
+                        .toolbar {
+                            ToolbarItem(placement: .navigationBarTrailing) {
+                                Button("Kapat") {
+                                    showTopPlayers = false
+                                }
+                            }
+                        }
+                }
+            }
         }
         .onAppear {
             Task {
@@ -90,4 +106,3 @@ struct TeamsTableView: View {
 #Preview {
     TeamsTableView(leagueID: 71)
 }
-

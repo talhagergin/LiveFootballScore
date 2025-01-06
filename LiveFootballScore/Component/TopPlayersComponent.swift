@@ -11,10 +11,8 @@ protocol TopPlayerItem: Identifiable {
     var teamColors: TeamColors { get }
 }
 
-// Player modelini TopPlayerItem protokolüne uygun hale getiriyoruz.
 extension Player: TopPlayerItem {}
 extension PlayerRating: TopPlayerItem{}
-// PlayerAssist modelini TopPlayerItem protokolüne uygun hale getiriyoruz.
 extension PlayerAssist: TopPlayerItem {}
 
 struct TopPlayersComponent<Item: TopPlayerItem>: View {

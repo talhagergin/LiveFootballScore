@@ -21,10 +21,10 @@ struct ContentView: View {
             .tag(0)
 
             NavigationView {
-                ProfileView(selectionTabItem: $selectionItem)
+                NewsView(selectionTabItem: $selectionItem)
             }
             .tabItem {
-                Label("Hesabım", systemImage: "person")
+                Label("Haberler", systemImage: "newspaper")
                     .environment(\.symbolVariants, selectionItem == 1 ? .fill : .none)
             }
             .tag(1)

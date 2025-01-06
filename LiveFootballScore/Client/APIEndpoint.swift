@@ -19,6 +19,7 @@ enum APIEndpoint{
     static let topPlayersGolURL = "https://free-api-live-football-data.p.rapidapi.com/football-get-top-players-by-goals?leagueid="
     static let topPlayersAssistURL = "https://free-api-live-football-data.p.rapidapi.com/football-get-top-players-by-assists?leagueid="
     static let topPlayersRatingURL = "https://free-api-live-football-data.p.rapidapi.com/football-get-top-players-by-rating?leagueid="
+    static let newsURL = "https://free-api-live-football-data.p.rapidapi.com/football-get-trendingnews"
     /*
     case getLeaguesByCountry(Void)
     case getTeamsByLeagueID(Int)

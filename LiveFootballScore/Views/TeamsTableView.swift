@@ -4,6 +4,12 @@
 //
 //  Created by Talha Gergin on 15.12.2024.
 //
+//
+//  LeagueDetailsView.swift
+//  LiveFootballScore
+//
+//  Created by Talha Gergin on 15.12.2024.
+//
 
 import SwiftUI
 
@@ -25,6 +31,20 @@ struct TeamsTableView: View {
     var body: some View {
         ZStack {
             List {
+               
+                // Haberler için tıklanabilir resim
+                Section {
+                    NavigationLink(destination: NewsView(selectionTabItem: .constant(1))) { // NewsView adında bir sayfa oluşturman gerekiyor.
+                       Image("badget") // "news_banner" adında bir asset ekleyin veya kendi resim linkinizi kullanın.
+                           .resizable()
+                            .scaledToFill()
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 150)
+                            .clipped()
+                    }
+                    .listRowInsets(EdgeInsets())
+                }
+
                 Section(header: HStack {
                     Text("Takım").frame(maxWidth: .infinity, alignment: .leading)
                     Text("P").frame(width: 50, alignment: .center)
@@ -102,6 +122,7 @@ struct TeamsTableView: View {
         }
     }
 }
+
 
 #Preview {
     TeamsTableView(leagueID: 71)

@@ -14,13 +14,14 @@ enum APIEndpoint{
     static let baseURL = "https://free-api-live-football-data.p.rapidapi.com/football-get-all-leagues-with-countries"
     static let teamsURL = "https://free-api-live-football-data.p.rapidapi.com/football-get-list-all-team?leagueid="
     static let playersURL = "https://free-api-live-football-data.p.rapidapi.com/football-get-list-player?teamid="
+    static let playersDetailsURL = "https://free-api-live-football-data.p.rapidapi.com/football-get-player-detail?playerid="
     static let playerImageURL = "https://free-api-live-football-data.p.rapidapi.com/football-get-player-logo?playerid="
     static let matchesURL = "https://free-api-live-football-data.p.rapidapi.com/football-get-all-matches-by-league?leagueid="
     static let topPlayersGolURL = "https://free-api-live-football-data.p.rapidapi.com/football-get-top-players-by-goals?leagueid="
     static let topPlayersAssistURL = "https://free-api-live-football-data.p.rapidapi.com/football-get-top-players-by-assists?leagueid="
     static let topPlayersRatingURL = "https://free-api-live-football-data.p.rapidapi.com/football-get-top-players-by-rating?leagueid="
     static let newsURL = "https://free-api-live-football-data.p.rapidapi.com/football-get-trendingnews"
-    static let newsByLeagueURL = "https://free-api-live-football-data.p.rapidapi.com/football-get-league-news?leagueid=47&page=1"
+    //static let newsByLeagueURL = "https://free-api-live-football-data.p.rapidapi.com/football-get-league-news?leagueid=47&page=1"
     /*
     case getLeaguesByCountry(Void)
     case getTeamsByLeagueID(Int)

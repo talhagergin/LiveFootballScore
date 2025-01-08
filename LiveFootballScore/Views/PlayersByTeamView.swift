@@ -27,35 +27,40 @@ struct PlayersByTeamView: View {
     }
     
     var body: some View {
-        List(players) { player in
-            Section(header: Text(player.title)) {
-                ForEach(player.members) { member in
-                    HStack {
-                        Text(member.name)
-                        Spacer()
-                        AsyncImage(url: URL(string: playersImages[member.id] ?? "")) { image in
-                            image.resizable()
-                        } placeholder: {
-                            ProgressView()
-                        }
-                        .frame(width: 40, height: 40)
-                        .clipShape(Circle())
-                        .onAppear {
-                            if playersImages[member.id] == nil { // Eğer resim daha önce alınmamışsa
-                                Task {
-                                    await getPlayersImage(for: member.id)
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        .navigationTitle("Kadro")
-        .onAppear {
-            Task {
-                await getPlayersByTeam(teamID: teamID)
-            }
-        }
-    }
-}
+         List {
+             ForEach(players) { player in
+                 Section(header: Text(player.title)) {
+                     ForEach(player.members) { member in
+                         NavigationLink(destination: PlayerDetailsView(playerID: member.id,playerName: member.name)) {
+                             HStack {
+                                 Text(member.name)
+                                     .frame(maxWidth: .infinity, alignment: .leading)
+                                 Spacer()
+                                 AsyncImage(url: URL(string: playersImages[member.id] ?? "")) { image in
+                                     image.resizable()
+                                 } placeholder: {
+                                     ProgressView()
+                                 }
+                                 .frame(width: 40, height: 40)
+                                 .clipShape(Circle())
+                                 .onAppear {
+                                     if playersImages[member.id] == nil {
+                                         Task {
+                                             await getPlayersImage(for: member.id)
+                                         }
+                                     }
+                                 }
+                             }
+                         }
+                     }
+                 }
+             }
+         }
+         .navigationTitle("Kadro")
+         .onAppear {
+             Task {
+                 await getPlayersByTeam(teamID: teamID)
+             }
+         }
+     }
+ }

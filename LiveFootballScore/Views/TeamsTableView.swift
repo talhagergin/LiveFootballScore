@@ -1,16 +1,3 @@
-//
-//  LeagueDetailsView.swift
-//  LiveFootballScore
-//
-//  Created by Talha Gergin on 15.12.2024.
-//
-//
-//  LeagueDetailsView.swift
-//  LiveFootballScore
-//
-//  Created by Talha Gergin on 15.12.2024.
-//
-
 import SwiftUI
 
 struct TeamsTableView: View {
@@ -31,12 +18,11 @@ struct TeamsTableView: View {
     var body: some View {
         ZStack {
             List {
-               
                 // Haberler için tıklanabilir resim
                 Section {
-                    NavigationLink(destination: NewsView(selectionTabItem: .constant(1))) { // NewsView adında bir sayfa oluşturman gerekiyor.
-                       Image("badget") // "news_banner" adında bir asset ekleyin veya kendi resim linkinizi kullanın.
-                           .resizable()
+                    NavigationLink(destination: NewsView(selectionTabItem: .constant(1))) {
+                        Image("badget")
+                            .resizable()
                             .scaledToFill()
                             .frame(maxWidth: .infinity)
                             .frame(height: 150)
@@ -44,31 +30,12 @@ struct TeamsTableView: View {
                     }
                     .listRowInsets(EdgeInsets())
                 }
-
-                Section(header: HStack {
-                    Text("Takım").frame(maxWidth: .infinity, alignment: .leading)
-                    Text("P").frame(width: 50, alignment: .center)
-                    Text("G").frame(width: 70, alignment: .center)
-                    Text("M").frame(width: 70, alignment: .center)
-                    Text("B").frame(width: 70, alignment: .center)
-                }) {
+                
+                // Tablo Başlıkları
+                Section(header: tableHeader) {
                     ForEach(teams) { team in
                         NavigationLink(destination: PlayersByTeamView(teamID: team.id)) {
-                            HStack {
-                                Text(team.name).frame(maxWidth: .infinity, alignment: .leading)
-                                Text("\(team.pts)").frame(width: 30, alignment: .center)
-                                Text("\(team.wins)").frame(width: 30, alignment: .center)
-                                Text("\(team.losses)").frame(width: 30, alignment: .center)
-                                Text("\(team.draws)").frame(width: 30, alignment: .center)
-                                AsyncImage(url: URL(string: team.logo)) { image in
-                                    image.resizable()
-                                } placeholder: {
-                                    ProgressView()
-                                }
-                                .frame(width: 40, height: 40)
-                                .clipShape(Circle())
-                                .frame(width: 50, alignment: .center)
-                            }
+                            tableRow(for: team)
                         }
                     }
                 }
@@ -87,7 +54,6 @@ struct TeamsTableView: View {
                     } label: {
                         Text("İstatistik Liderleri")
                     }
-                    
                 }
             }
             .sheet(isPresented: $showMatches) {
@@ -103,8 +69,8 @@ struct TeamsTableView: View {
                 }
             }
             .sheet(isPresented: $showTopPlayers) {
-                 NavigationView {
-                    TopPlayersView(leagueID: leagueID) // leagueID'yi TopPlayersView'e aktarıyoruz
+                NavigationView {
+                    TopPlayersView(leagueID: leagueID)
                         .toolbar {
                             ToolbarItem(placement: .navigationBarTrailing) {
                                 Button("Kapat") {
@@ -121,8 +87,64 @@ struct TeamsTableView: View {
             }
         }
     }
-}
+    
+    // Tablo Başlıkları
+   private var tableHeader: some View {
+        HStack(spacing: 0) {
+             HStack(spacing: 0) {
+                   Text("Takım")
+                       .frame(maxWidth: .infinity, alignment: .leading)
+                       .padding(.leading, 30) // Takım yazısının soluna boşluk ekledik
+               }
+            
+            HStack(spacing: 0) {
+                Text("P").frame(width: 25, alignment: .center)
+                Text("G").frame(width: 25, alignment: .center)
+                Text("M").frame(width: 25, alignment: .center)
+                Text("B").frame(width: 25, alignment: .center)
+                
+            }
+             Spacer()
+            .frame(width: 50)
 
+        }
+        .padding(.horizontal, 10)
+
+    }
+
+    
+    // Tablo Satırları
+    private func tableRow(for team: Teams) -> some View {
+        HStack(spacing: 0) {
+          HStack(spacing: 0) {
+                 Text("\(team.idx).")
+                      .frame(width: 30,alignment: .leading)
+                 Text(team.name)
+                     .lineLimit(2)
+                     .fixedSize(horizontal: false, vertical: true)
+                      .frame(maxWidth: .infinity, alignment: .leading)
+            }
+            
+            HStack(spacing: 0) {
+                Text("\(team.pts)").frame(width: 25, alignment: .center)
+                Text("\(team.wins)").frame(width: 25, alignment: .center)
+                Text("\(team.losses)").frame(width: 25, alignment: .center)
+                Text("\(team.draws)").frame(width: 25, alignment: .center)
+            }
+            Spacer() // Logoyu sağa yaslamak için boşluk
+            
+            AsyncImage(url: URL(string: team.logo)) { image in
+                image.resizable()
+            } placeholder: {
+                ProgressView()
+            }
+            .frame(width: 40, height: 40)
+            .clipShape(Circle())
+            .frame(width: 50, alignment: .trailing)
+        }
+        .padding(.horizontal, 10)
+    }
+}
 
 #Preview {
     TeamsTableView(leagueID: 71)

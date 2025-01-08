@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		0A04CA272D0F1640003FB0E5 /* LiveFootballScore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiveFootballScore.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A04CA272D0F1640003FB0E5 /* LiveFootballScoreTurkish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiveFootballScoreTurkish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -40,7 +40,7 @@
 		0A04CA282D0F1640003FB0E5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0A04CA272D0F1640003FB0E5 /* LiveFootballScore.app */,
+				0A04CA272D0F1640003FB0E5 /* LiveFootballScoreTurkish.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,9 +48,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0A04CA262D0F1640003FB0E5 /* LiveFootballScore */ = {
+		0A04CA262D0F1640003FB0E5 /* LiveFootballScoreTurkish */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0A04CA352D0F1642003FB0E5 /* Build configuration list for PBXNativeTarget "LiveFootballScore" */;
+			buildConfigurationList = 0A04CA352D0F1642003FB0E5 /* Build configuration list for PBXNativeTarget "LiveFootballScoreTurkish" */;
 			buildPhases = (
 				0A04CA232D0F1640003FB0E5 /* Sources */,
 				0A04CA242D0F1640003FB0E5 /* Frameworks */,
@@ -63,11 +63,11 @@
 			fileSystemSynchronizedGroups = (
 				0A04CA292D0F1640003FB0E5 /* LiveFootballScore */,
 			);
-			name = LiveFootballScore;
+			name = LiveFootballScoreTurkish;
 			packageProductDependencies = (
 			);
 			productName = LiveFootballScore;
-			productReference = 0A04CA272D0F1640003FB0E5 /* LiveFootballScore.app */;
+			productReference = 0A04CA272D0F1640003FB0E5 /* LiveFootballScoreTurkish.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -85,7 +85,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 0A04CA222D0F1640003FB0E5 /* Build configuration list for PBXProject "LiveFootballScore" */;
+			buildConfigurationList = 0A04CA222D0F1640003FB0E5 /* Build configuration list for PBXProject "LiveFootballScoreTurkish" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -99,7 +99,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0A04CA262D0F1640003FB0E5 /* LiveFootballScore */,
+				0A04CA262D0F1640003FB0E5 /* LiveFootballScoreTurkish */,
 			);
 		};
 /* End PBXProject section */
@@ -261,11 +261,12 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = projects.LiveFootballScore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -291,11 +292,12 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = projects.LiveFootballScore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -307,7 +309,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0A04CA222D0F1640003FB0E5 /* Build configuration list for PBXProject "LiveFootballScore" */ = {
+		0A04CA222D0F1640003FB0E5 /* Build configuration list for PBXProject "LiveFootballScoreTurkish" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0A04CA332D0F1642003FB0E5 /* Debug */,
@@ -316,7 +318,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0A04CA352D0F1642003FB0E5 /* Build configuration list for PBXNativeTarget "LiveFootballScore" */ = {
+		0A04CA352D0F1642003FB0E5 /* Build configuration list for PBXNativeTarget "LiveFootballScoreTurkish" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0A04CA362D0F1642003FB0E5 /* Debug */,

@@ -8,7 +8,7 @@
 import Foundation
 enum APIEndpoint{
     static let headers = [
-        "x-rapidapi-key": "aaab41f623mshfd578203465d8b0p1e23a9jsn2924dd4892b5",
+        "x-rapidapi-key": "4bfe04b598msh82917e44902bbcap144ba5jsn733eab53fcb4",
         "x-rapidapi-host": "free-api-live-football-data.p.rapidapi.com"
     ]
     static let baseURL = "https://free-api-live-football-data.p.rapidapi.com/football-get-all-leagues-with-countries"
@@ -20,6 +20,7 @@ enum APIEndpoint{
     static let topPlayersAssistURL = "https://free-api-live-football-data.p.rapidapi.com/football-get-top-players-by-assists?leagueid="
     static let topPlayersRatingURL = "https://free-api-live-football-data.p.rapidapi.com/football-get-top-players-by-rating?leagueid="
     static let newsURL = "https://free-api-live-football-data.p.rapidapi.com/football-get-trendingnews"
+    static let newsByLeagueURL = "https://free-api-live-football-data.p.rapidapi.com/football-get-league-news?leagueid=47&page=1"
     /*
     case getLeaguesByCountry(Void)
     case getTeamsByLeagueID(Int)

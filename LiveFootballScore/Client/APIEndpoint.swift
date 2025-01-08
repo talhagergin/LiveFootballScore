@@ -8,7 +8,7 @@
 import Foundation
 enum APIEndpoint{
     static let headers = [
-        "x-rapidapi-key": "4bfe04b598msh82917e44902bbcap144ba5jsn733eab53fcb4",
+        "x-rapidapi-key": "72f72c7d4amsh7a74bf28ad8d4c1p127ba1jsn119f691d4c9f",
         "x-rapidapi-host": "free-api-live-football-data.p.rapidapi.com"
     ]
     static let baseURL = "https://free-api-live-football-data.p.rapidapi.com/football-get-all-leagues-with-countries"

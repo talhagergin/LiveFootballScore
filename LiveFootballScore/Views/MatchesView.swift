@@ -5,15 +5,16 @@ struct MatchesView: View {
     @State private var matchClient = MatchClient()
     @State private var matches: [Match] = []
 
-    // Maçları filtrele ve sırala
+    // match filter and order
     private func filterAndSortMatches(_ allMatches: [Match]) -> [Match] {
         let now = Date()
-        let twoDaysAgo = Calendar.current.date(byAdding: .day, value: -2, to: now) ?? now
+        let todayStart = Calendar.current.startOfDay(for: now)
+        let twoDaysAgo = Calendar.current.date(byAdding: .day, value: -2, to: todayStart) ?? todayStart
+
         
-        // 2 gün öncesinden başlayarak gelecekteki maçları filtrele ve sırala
         let filteredMatches = allMatches.filter { match in
             if let matchDate = convertDate(match.status.utcTime) {
-                return matchDate >= twoDaysAgo
+                return matchDate >= twoDaysAgo && matchDate < Calendar.current.date(byAdding: .day, value: 2, to: todayStart)!
             }
             return false
         }.sorted { match1, match2 in
@@ -23,8 +24,7 @@ struct MatchesView: View {
             }
             return date1 < date2
         }
-        
-        // İlk 15 maçı döndür
+        // first 15 matches
         return Array(filteredMatches.prefix(15))
     }
 
